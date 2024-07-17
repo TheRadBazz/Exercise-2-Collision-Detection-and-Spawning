@@ -10,7 +10,7 @@ public class PickupManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i =0; 1 < spawnAmount; i++)
+        for(int i =0; i < spawnAmount; i++)
         {
             GameObject spawnedObject = (GameObject) Instantiate(pickupPrefab);
             spawnedObject.transform.Translate(Random.Range(-spawnRange.x, spawnRange.x),
