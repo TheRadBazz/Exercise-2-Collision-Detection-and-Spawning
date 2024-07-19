@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 input = new Vector3(Input.GetAxis("Horizontal"),
-            Input.GetAxis("Vertical"), 0);
+        Vector3 input = new Vector3(Input.GetAxis("HorizontalPrimary"),
+            Input.GetAxis("VerticalPrimary"), 0);
 
         Vector3 direction = input.normalized;
         velocity = direction * speed;
@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
             Pickup pickup = triggerCollider.GetComponentInParent<Pickup>();
             mass += pickup.mass;
             Destroy(triggerCollider.gameObject);
+
+
+            GetComponent<UnityEngine.Camera>().orthographicSize =
+                Screen.height *.2f;
         }
         
     }
