@@ -8,12 +8,29 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
     public float mass = 1;
 
-    // Update is called once per frame
     void Update()
     {
-        Vector3 input = new Vector3(Input.GetAxis("HorizontalPrimary"),
-            Input.GetAxis("VerticalPrimary"), 0);
+        Vector3 input;
+        string horizontalInputName;
+        string verticalInputName;
 
+        if (gameObject.CompareTag("Player1"))
+        {
+            horizontalInputName = "HorizontalPrimary";
+            verticalInputName = "VerticalPrimary";
+        }
+        else if (gameObject.CompareTag("Player2"))
+        {
+            horizontalInputName = "HorizontalSecondary";
+            verticalInputName = "VerticalSecondary";
+        }
+        else
+        {
+            Debug.LogWarning("GameObject does not have Player1 or Player2 tag assigned.");
+            return;
+        }
+
+        input = new Vector3(Input.GetAxis(horizontalInputName), Input.GetAxis(verticalInputName), 0);
         Vector3 direction = input.normalized;
         velocity = direction * speed;
 
