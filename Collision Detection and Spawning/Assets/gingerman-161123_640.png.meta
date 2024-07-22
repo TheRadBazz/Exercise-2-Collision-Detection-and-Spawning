@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gingerman-161123_640_0: 4035054274919392164
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

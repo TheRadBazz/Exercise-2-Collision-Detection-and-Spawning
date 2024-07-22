@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 0.2f;
     Vector3 velocity;
     public float mass = 1;
+    public int score = 0;
+    public GameObject scoreText;
 
     void Update()
     {
@@ -41,19 +44,18 @@ public class PlayerController : MonoBehaviour
     {
         transform.Translate(velocity);
     }
+
     private void OnTriggerEnter(Collider triggerCollider)
     {
-        if(triggerCollider.tag == "Pickup")
+        if (triggerCollider.CompareTag("Pickup"))
         {
             Pickup pickup = triggerCollider.GetComponentInParent<Pickup>();
             mass += pickup.mass;
             Destroy(triggerCollider.gameObject);
+            score += pickup.value;
+            scoreText.GetComponent<TMP_Text>().text = "Score: " + score;
 
-
-            GetComponent<UnityEngine.Camera>().orthographicSize =
-                Screen.height *.2f;
+            Camera.main.orthographicSize = Screen.height * 0.2f;
         }
-        
     }
-
 }

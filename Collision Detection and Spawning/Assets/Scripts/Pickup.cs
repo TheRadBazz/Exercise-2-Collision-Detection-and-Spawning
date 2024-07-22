@@ -6,6 +6,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     public float mass = 0.4f;
+    public int value = 100;
     // Start is called before the first frame update
     void Start()
     {
